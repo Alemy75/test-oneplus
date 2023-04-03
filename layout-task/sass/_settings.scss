@@ -1,0 +1,170 @@
+body {
+	position: relative;
+	font-family: 'Rubik', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: black;
+
+	@media (max-width: 430px) {
+		font-size: 11px;
+	}
+
+	@media (max-width: 350px) {
+		font-size: 9px;
+	}
+}
+
+button {
+	all: unset;
+}
+
+h1 {
+	all: unset;
+}
+
+.page {
+	position: relative;
+	max-width: 768px;
+	margin: 0 auto;
+
+	&-wrap {
+		margin: 127px 30px;
+
+		@media (max-width: 739px) {
+			margin: 127px 16px;
+		}
+	}
+
+	&__light {
+		left: 0;
+		top: -70px;
+		z-index: -1;
+		position: absolute;
+		width: 200px;
+	}
+}
+
+.popup {
+	position: absolute;
+	width: 45%;
+	background-color: white;
+	top: 50px;
+	border: 1px solid rgba(0, 0, 0, 0.6);
+	border-radius: 10px;
+	@media (max-width: 739px) {
+		top: 90px;
+		width: 100%;
+		left: 0;
+	}
+	&-wrap {
+		width: 100%;
+		padding: 20px;
+		& button {
+			margin-top: 60px;
+			font-family: 'Istok Web', sans-serif;
+			font-weight: 400;
+			width: 100%;
+			text-align: center;
+			font-size: 17px;
+			background: linear-gradient(90deg, #FDD446 0%, #F79B47 100%);
+			border-radius: 15px;
+			line-height: 24.92px;
+			padding: 6px 0; 	
+			margin-bottom: 10px;
+		}
+	}
+
+	&__title {
+		h1 {
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 24px;
+			letter-spacing: 0em;
+		}
+		span {
+			display: block;
+			width: 15px;
+			height: 3px;
+			background: rgba(253, 212, 70, 1);
+		}
+	}
+	&__item {
+		margin-bottom: 40px;
+		&__selects {
+			margin-bottom: 18px;
+			& label {
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 14px;
+				&::before {
+					color: black;
+				}
+			}
+		}
+	}
+	&__cost {
+		&__average {
+			position: relative;
+			width: 100%;
+			margin-top: 14px;
+			& .line {
+				display: block;
+				height: 1px;
+				width: 50%;
+				background: #00000080;
+				z-index: 13;
+			}
+			& .min, .max {
+				z-index: 14;
+			}
+			& .backline {
+				position: absolute;
+				display: block;
+				height: 1px;
+				width: 100%;
+				background: #00000010;
+				z-index: 12;
+			}
+		}
+		&__digits {
+			margin-top: 20px;
+			color: #00000080;
+			& div {
+				border-bottom: 1px solid #00000080;
+				width: 33%;
+			}
+			& span {
+				height: 1px;
+				width: 30px;
+				background: #00000080;
+			}
+		}
+	}
+	& .check {
+		all: unset;
+		width: 20px;
+		height: 20px;
+		margin-right: 8px;
+		border-radius: 0;
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			flex-shrink: 0;
+			flex-grow: 0;
+			border: 1px solid #adb5bd;
+			border-radius: 0;
+			margin-right: 0.5em;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: 50% 50%;
+			-webkit-border-radius: 0;
+			-moz-border-radius: 0;
+			-ms-border-radius: 0;
+			-o-border-radius: 0;
+		}
+		&:checked::before {
+			background: #FDD446;
+		  }
+	}
+}
