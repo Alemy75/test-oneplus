@@ -1,23 +1,53 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  // Состояние для валют
+  const [items, setItems] = useState([])
+
+
+  // При первой загрузке фетчим валюты
+  useEffect(() => {
+    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1')
+      .then(res => res.json())
+      // Присваиваем состоянию валют выгруженные данные
+      .then(data => setItems(data))
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='container'>
+        <table className="iksweb">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>symbol</th>
+              <th>name</th>
+            </tr>
+          </thead>
+          <tbody>
+            { 
+              // Отрисовка шаблона для валюты (строка таблицы)
+              items.map((item, index) => (
+                <tr className={
+                  // Если символ usdt, то красим строку в зеленый.
+                  item.symbol === "usdt" 
+                    ? 'usdt' 
+                    // Иначе проверяем, если индекс < 5 то красим в синий 
+                    : index < 5 
+                      ? 'first-five' 
+                      // Иначе className отсутствует
+                      : ''
+                }>
+                  <td>{item.id}</td>
+                  <td>{item.symbol}</td>
+                  <td>{item.name}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
