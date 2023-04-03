@@ -29,7 +29,7 @@ function App() {
             { 
               // Отрисовка шаблона для валюты (строка таблицы)
               items.map((item, index) => (
-                <tr className={
+                <tr key={item.id} className={
                   // Если символ usdt, то красим строку в зеленый.
                   item.symbol === "usdt" 
                     ? 'usdt' 
